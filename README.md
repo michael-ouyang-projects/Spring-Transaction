@@ -1,2 +1,5 @@
 # Spring-Transaction
-Some Practice Relate to Spring Transaction
+Some Practice Related to Spring Transaction Management
+
+1. Propagation
+2. Multi-Thread
