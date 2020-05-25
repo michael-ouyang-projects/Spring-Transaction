@@ -76,6 +76,10 @@ public class SecondService {
 ----------------------------------------------------------------------------------------------------------
     
 /*
+ *  java.lang.Exception: Failure
+ *  java.lang.Exception: Failure
+ *  Transaction rolled back because it has been marked as rollback-only
+ *
  *  Result: 
  *  | MYKEY | MYVALUE |
  * 
