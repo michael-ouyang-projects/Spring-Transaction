@@ -1,8 +1,5 @@
 package com.test.SpringTest;
 
-import java.sql.SQLException;
-
-import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -10,19 +7,23 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class MyService {
+public class FirstService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void test() throws SQLException {
+    @Autowired
+    private SecondService secondService;
+
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void goMethod() throws Exception {
 
         jdbcTemplate.batchUpdate("INSERT INTO TB_MYTEST(MYKEY, MYVALUE) VALUES ('start', 'start')");
 
         for (int i = 1; i <= 5; i++) {
 
-            ((MyService) AopContext.currentProxy()).subMethod(i);
+            secondService.subMethod(i);
 
         }
 
@@ -30,15 +31,33 @@ public class MyService {
 
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    private void subMethod(int i) throws SQLException {
+}
+
+----------------------------------------------------------------------------------------------------------
+    
+package com.test.SpringTest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class SecondService {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void subMethod(int i) throws Exception {
 
         String sqlString = String.format("INSERT INTO TB_MYTEST(MYKEY, MYVALUE) VALUES ('%d', '%d')", i, i);
         jdbcTemplate.batchUpdate(sqlString);
 
         if (i % 2 == 0) {
 
-            throw new SQLException();
+            throw new Exception("Failure"); // rollback all
 
         }
 
@@ -46,8 +65,10 @@ public class MyService {
 
 }
 
+----------------------------------------------------------------------------------------------------------
+    
 /*
- *  Result:
+ *  Result: 
  *  | MYKEY | MYVALUE |
  * 
  */
