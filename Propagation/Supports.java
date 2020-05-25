@@ -74,7 +74,7 @@ public class SecondService {
 ----------------------------------------------------------------------------------------------------------------
 
 /*
- *  Result: ()
+ *  Result: (If DataSource AutoCommit set to true)
  *  | MYKEY | MYVALUE |
  *  | start |  start  |
  *  |   1   |    1    |
@@ -83,5 +83,8 @@ public class SecondService {
  *  |   4   |    4    |
  *  |   5   |    5    |
  *  |  end  |   end   |
+ *
+ *  Result: (If DataSource AutoCommit set to false)
+ *  | MYKEY | MYVALUE |
  * 
  */
