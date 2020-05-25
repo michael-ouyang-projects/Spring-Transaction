@@ -30,7 +30,7 @@ public class MyService {
 
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     private void subMethod(int i) throws SQLException {
 
         String sqlString = String.format("INSERT INTO TB_MYTEST(MYKEY, MYVALUE) VALUES ('%d', '%d')", i, i);
@@ -47,7 +47,7 @@ public class MyService {
 }
 
 /*
- * 
- * Result: | MYKEY | MYVALUE |
+ *  Result:
+ *  | MYKEY | MYVALUE |
  * 
  */
