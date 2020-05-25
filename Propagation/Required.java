@@ -23,7 +23,15 @@ public class FirstService {
 
         for (int i = 1; i <= 5; i++) {
 
-            secondService.subMethod(i);
+            try {
+
+                secondService.subMethod(i);
+
+            } catch (Exception e) {
+
+                System.err.println(e);
+
+            }
 
         }
 
@@ -57,7 +65,7 @@ public class SecondService {
 
         if (i % 2 == 0) {
 
-            throw new Exception("Failure"); // rollback all
+            throw new Exception("Failure"); // rollback transaction
 
         }
 
