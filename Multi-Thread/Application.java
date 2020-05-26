@@ -26,3 +26,14 @@ public class Application implements CommandLineRunner {
     }
 
 }
+
+/*
+ *  Result: 
+ *  | MYKEY | MYVALUE |
+ *  | start |  start  |
+ *  |   1   |    1    |
+ *  |   3   |    3    |
+ *  |   5   |    5    |
+ *  |  end  |   end   |
+ * 
+ */
