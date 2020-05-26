@@ -9,5 +9,5 @@
 # Usage
 
 1. Inject DataSource to JdbcTemplate
-2. Inject DataSource to LocalContainerEntityManagerFactoryBean then use it to create EntityManager
+2. Inject DataSource to LocalContainerEntityManagerFactoryBean, then use it to create EntityManager
 3. Use JdbcTemplate(JDBC) or EntityManager(JPA) to manipulate Database.
