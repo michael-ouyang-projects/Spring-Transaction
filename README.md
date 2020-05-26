@@ -1,5 +1,10 @@
 # Transaction-Management-Approach
-@Transactional(Declarative), TransactionTemplate(Programmatic) => Both use low-level PlatformTransactionManager
+
+1. Declarative: @Transactional
+2. Programmatic: TransactionTemplate
+* Both use PlatformTransactionManager API(lower-level) to manage their transactions internally.
+
+----------------------------------------------------------------------------------------------------
 
 # In Transaction
 
