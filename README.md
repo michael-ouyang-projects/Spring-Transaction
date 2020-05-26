@@ -1,5 +1,8 @@
-# Spring-Transaction-Management
-Some Practice Related to Spring Transaction Management
+# Transaction-Management-Approach
+@Transactional(Declarative), TransactionTemplate(Programmatic) => Both use low-level PlatformTransactionManager
 
-1. Propagation
-2. Multi-Thread
+# In Transaction
+
+1. Inject DataSource to JdbcTemplate
+2. Inject DataSource to LocalContainerEntityManagerFactoryBean then create EntityManager
+3. Use JdbcTemplate(JDBC) or EntityManager(JPA) to manipulate Database.
