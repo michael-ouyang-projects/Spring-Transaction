@@ -37,7 +37,7 @@ public class FirstService {
 
         jdbcTemplate.batchUpdate("INSERT INTO TB_MYTEST(MYKEY, MYVALUE) VALUES ('end', 'end')");
 
-        throw new Exception("Failure in goMethod"); // rollback transaction
+        throw new Exception("Failure in goMethod"); // rollback the only transaction
     }
 
 }
